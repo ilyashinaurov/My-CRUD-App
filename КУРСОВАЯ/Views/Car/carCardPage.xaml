@@ -46,7 +46,7 @@
             </WrapPanel>
 
             <Button Grid.Column="1" Grid.Row="5" Height="25" Width="150" HorizontalAlignment="Left" Content="Получить карту ТС" Command="{Binding _getCarCard}"/>
-            <Button Grid.Column="1" Grid.Row="6" Height="25" Width="150" HorizontalAlignment="Left" Content="TEST" Command="{Binding _getMileage}"/>
+
         </Grid>
     </Grid>
 </Page>
