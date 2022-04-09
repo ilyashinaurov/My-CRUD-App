@@ -27,10 +27,8 @@
         <ListView Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="8" ItemsSource="{Binding _carFuelPeriod._queryResult}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Номер" DisplayMemberBinding="{Binding Госномер}"/>
+                    <GridViewColumn Width="300" Header="Номер" DisplayMemberBinding="{Binding Госномер}"/>
                     <GridViewColumn Header="Расход" DisplayMemberBinding="{Binding Расход}"/>
-                    <GridViewColumn Header="Дата начала" DisplayMemberBinding="{Binding ДатаНачала}"/>
-                    <GridViewColumn Header="Дата конца" DisplayMemberBinding="{Binding ДатаОкончания}"/>
                 </GridView>
                 
             </ListView.View>
