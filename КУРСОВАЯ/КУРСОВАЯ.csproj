@@ -131,8 +131,14 @@
     <Compile Include="Views\Car\carListPage.xaml.cs">
       <DependentUpon>carListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Car\carMileageAllTimePage.xaml.cs">
+      <DependentUpon>carMileageAllTimePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Car\carMileagePeriod.xaml.cs">
       <DependentUpon>carMileagePeriod.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Car\carReportCardPage.xaml.cs">
+      <DependentUpon>carReportCardPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Driver\driverCardPage.xaml.cs">
       <DependentUpon>driverCardPage.xaml</DependentUpon>
@@ -164,7 +170,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Car\carMileageAllTimePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Car\carMileagePeriod.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Car\carReportCardPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

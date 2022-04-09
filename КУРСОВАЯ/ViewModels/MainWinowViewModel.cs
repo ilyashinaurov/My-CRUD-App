@@ -32,6 +32,10 @@ namespace КУРСОВАЯ.ViewModels
 
         private Page carMileagePeriod;
 
+        private Page carReportCard;
+
+        private Page carMileageAllTime;
+
         private Page currentPage;
 
         
@@ -52,6 +56,8 @@ namespace КУРСОВАЯ.ViewModels
             carCard = new carCardPage();
             carFuelConsuptionPeriod = new carFuelconsumptionPeriodPage();
             carMileagePeriod = new carMileagePeriod();
+            carReportCard = new carReportCardPage();
+            carMileageAllTime = new carMileageAllTimePage();
         }
 
         private RelayCommand getCarCard;
@@ -190,6 +196,41 @@ namespace КУРСОВАЯ.ViewModels
                   }));
             }
         }
+
+        private RelayCommand getCarReportCard; // команда добавления записи
+
+        public RelayCommand _getCarReportCard// геттер, как работает пока не ясно т_т
+        {
+            get
+            {
+                return getCarReportCard ??
+                  (getCarReportCard = new RelayCommand(obj =>
+                  {
+                      _currentPage = carReportCard;
+
+                  }));
+            }
+        }
+
+        private RelayCommand getCarMileageAllTime; // команда добавления записи
+
+        public RelayCommand _getCarMileageAllTime// геттер, как работает пока не ясно т_т
+        {
+            get
+            {
+                return getCarMileageAllTime ??
+                  (getCarMileageAllTime = new RelayCommand(obj =>
+                  {
+                      _currentPage = carMileageAllTime;
+
+                  }));
+            }
+        }
+
+
+
+
+        
 
 
 

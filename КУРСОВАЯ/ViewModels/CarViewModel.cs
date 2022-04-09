@@ -48,6 +48,22 @@ namespace КУРСОВАЯ.ViewModels
             set { mileagePeriod = value; OnPropertyChanged("mileagePeriod"); }
         }
 
+        private CarQueryInfo reportCard;
+
+        public CarQueryInfo _reportCard
+        {
+            get { return reportCard; }
+            set { reportCard = value; OnPropertyChanged("reportCard"); }
+        }
+
+        private CarQueryInfo mileageAllTime;
+
+        public CarQueryInfo _mileageAllTime
+        {
+            get { return mileageAllTime; }
+            set { mileageAllTime = value; OnPropertyChanged("mileageAllTime"); }
+        }
+
 
 
         public CarViewModel()
@@ -62,6 +78,11 @@ namespace КУРСОВАЯ.ViewModels
             _carCard = new CarQueryInfo();
             _carFuelPeriod = new CarQueryInfo();
             _mileagePeriod = new CarQueryInfo();
+            _reportCard = new CarQueryInfo();
+            _mileageAllTime = new CarQueryInfo();
+
+            _reportCard._queryResult = transportCompanyEntities.ИспользованиеТС().ToList<object>();
+            _mileageAllTime._queryResult = transportCompanyEntities.ОбщийПробегТС().ToList<object>();
 
         }
 
@@ -122,22 +143,20 @@ namespace КУРСОВАЯ.ViewModels
         }
 
 
+        private RelayCommand getReportCard; // команда добавления записи
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        public RelayCommand _getReportCard// геттер, как работает пока не ясно т_т
+        {
+            get
+            {
+                return getReportCard ??
+                  (getReportCard = new RelayCommand(obj =>
+                  {
+                      _reportCard._queryResult = transportCompanyEntities.ИспользованиеТС().ToList<object>();
+                      
+                  }));
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = null)

@@ -1,0 +1,24 @@
+﻿<Page x:Class="КУРСОВАЯ.Views.Car.carReportCardPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:КУРСОВАЯ.Views.Car"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="carReportCardPage">
+
+    <Grid>
+        <ListView ItemsSource="{Binding _reportCard._queryResult}">
+            <ListView.View>
+
+                <GridView>
+                    <GridViewColumn Header="Номер" DisplayMemberBinding="{Binding Госномер}"/>
+                    <GridViewColumn Header="Дата начала заказа" DisplayMemberBinding="{Binding НачалоЗаказа}"/>
+                    <GridViewColumn Header="Дата конца заказа" DisplayMemberBinding="{Binding КонецЗаказа}"/>
+                    
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Page>
