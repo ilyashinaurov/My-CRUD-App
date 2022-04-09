@@ -1,0 +1,71 @@
+﻿<Page x:Class="КУРСОВАЯ.Views.driverCardPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:КУРСОВАЯ.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="driverCardPage">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <WrapPanel Grid.Row="1" Grid.Column="1">
+            <Label FontSize="20" > Введите код водителя</Label>
+            <TextBox FontSize="20"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding _driverQueryInfo._id, UpdateSourceTrigger=PropertyChanged}" Width="25"/>
+            <Label/>
+            
+        </WrapPanel>
+        <WrapPanel Grid.Column="1" Grid.Row="2">
+            <TextBlock Margin="10" Width="100" Text="Имя" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+            <TextBlock Text="{Binding _driverQueryInfo._driverCard.Имя, UpdateSourceTrigger=PropertyChanged}" Margin="10" Width="100" FontSize="16" FontWeight="Bold" FontStyle="Normal"/>
+        </WrapPanel>
+        <WrapPanel Grid.Column="1" Grid.Row="3">
+            <TextBlock Margin="10" Width="100" Text="Фамилия" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+            <TextBlock Text="{Binding _driverQueryInfo._driverCard.Фамилия, UpdateSourceTrigger=PropertyChanged}" Margin="10" Width="100" FontSize="16" FontWeight="Bold" FontStyle="Normal"/>
+        </WrapPanel>
+        <WrapPanel Grid.Column="1" Grid.Row="4">
+            <TextBlock Margin="10" Width="100" Text="Отчество" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+            <TextBlock Text="{Binding _driverQueryInfo._driverCard.Отчество, UpdateSourceTrigger=PropertyChanged}" Margin="10" Width="100" FontSize="16" FontWeight="Bold" FontStyle="Normal"/>
+        </WrapPanel>
+        <WrapPanel Grid.Column="1" Grid.Row="5">
+            <TextBlock Margin="10" Width="120" Text="Дата Рождения" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+            <TextBlock Text="{Binding _driverQueryInfo._driverCard.ДатаРождения, UpdateSourceTrigger=PropertyChanged}" Margin="10" Width="77" FontSize="16" FontWeight="Bold" FontStyle="Normal"/>
+        </WrapPanel>
+        <Button Grid.Column="1" Grid.Row="6" Height="25" Width="150" HorizontalAlignment="Left" Content="Получить карту водителя" Command="{Binding _getDriverCard}"/>
+    </Grid>
+</Page>
+
+
+<!--<StackPanel Grid.Column="2">
+    <TextBox Text="{Binding _driverQueryInfo._id, UpdateSourceTrigger=PropertyChanged}" Margin="10" Width="100" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+    <Label Content="{Binding _driverQueryInfo._driverCard.Имя, UpdateSourceTrigger=PropertyChanged}" Margin="10" Width="100" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+    <Label Content="{Binding _driverQueryInfo._driverCard.Фамилия, UpdateSourceTrigger=PropertyChanged}" Margin="10" Width="100" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+    <Label Content="{Binding _driverQueryInfo._driverCard.Отчество, UpdateSourceTrigger=PropertyChanged}" Margin="10" Width="100" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+    <Label Content="{Binding _driverQueryInfo._driverCard.ДатаРождения, UpdateSourceTrigger=PropertyChanged}" Margin="10" Width="100" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+    <Button Content="Получить карту" Command="{Binding _getDriverCard}"/>
+</StackPanel>
+<StackPanel Grid.Column="1">
+    <TextBlock Margin="10" Width="100" Text="Код Водителя" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+    <TextBlock Margin="10" Width="100" Text="Имя" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+    <TextBlock Margin="10" Width="100" Text="Фамилия" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+    <TextBlock Margin="10" Width="100" Text="Отчество" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+    <TextBlock Margin="10" Width="100" Text="Дата Рождения" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+</StackPanel>-->
+
+<!--//
+<Button Content="Получить карту водителя" Command="{Binding _getDriverCard}"/>-->

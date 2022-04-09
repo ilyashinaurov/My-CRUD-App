@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="65206da6e146498b859f822a6c579323" Name="Diagram1">
+        <EntityTypeShape EntityType="TransportCompanyModel.Заказ" Width="1.5" PointX="4.125" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransportCompanyModel.Водитель" Width="1.5" PointX="3" PointY="10.125" />
+        <EntityTypeShape EntityType="TransportCompanyModel.Клиент" Width="1.5" PointX="3" PointY="7" />
+        <EntityTypeShape EntityType="TransportCompanyModel.Маршрут" Width="1.5" PointX="3" PointY="21.875" />
+        <EntityTypeShape EntityType="TransportCompanyModel.МодельПрицепа" Width="1.5" PointX="1.5" PointY="18.125" />
+        <EntityTypeShape EntityType="TransportCompanyModel.МодельТС" Width="1.5" PointX="0.75" PointY="21" />
+        <EntityTypeShape EntityType="TransportCompanyModel.Пользователь" Width="1.5" PointX="1.5" PointY="0.75" />
+        <EntityTypeShape EntityType="TransportCompanyModel.Прицеп" Width="1.5" PointX="0.75" PointY="13.125" />
+        <EntityTypeShape EntityType="TransportCompanyModel.ТС" Width="1.5" PointX="3" PointY="14.375" />
+        <AssociationConnector Association="TransportCompanyModel.R_11" />
+        <AssociationConnector Association="TransportCompanyModel.R_10" />
+        <AssociationConnector Association="TransportCompanyModel.R_12" />
+        <AssociationConnector Association="TransportCompanyModel.R_9" />
+        <AssociationConnector Association="TransportCompanyModel.R_40" />
+        <AssociationConnector Association="TransportCompanyModel.R_42" />
+        <AssociationConnector Association="TransportCompanyModel.R_41" />
+        <EntityTypeShape EntityType="TransportCompanyModel.РасходВсехТС" Width="1.5" PointX="0.75" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

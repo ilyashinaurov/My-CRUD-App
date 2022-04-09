@@ -1,0 +1,40 @@
+﻿<Page x:Class="КУРСОВАЯ.Views.newOrderPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:КУРСОВАЯ.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="newOrderPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="250"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="2">
+            <TextBox x:Name="box1" Margin="5" Width="50"  Text="{Binding _selectedOrder.КодЗаказа, UpdateSourceTrigger=PropertyChanged}" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+            <TextBox x:Name="box2" Margin="10" Width="50" Text="{Binding _selectedOrder.КодКлиента, UpdateSourceTrigger=PropertyChanged }" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+            <TextBox x:Name="box3" Margin="10" Width="50" Text="{Binding _selectedOrder.КодМаршрута, UpdateSourceTrigger=PropertyChanged}" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+            <TextBox x:Name="box4" Margin="10" Width="50" Text="{Binding _selectedOrder.КодВодителя, UpdateSourceTrigger=PropertyChanged}" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+            <TextBox x:Name="box5" Margin="10" Width="50" Text="{Binding _selectedOrder.КодТС, UpdateSourceTrigger=PropertyChanged}" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+            <TextBox x:Name="box6" Margin="10" Width="50" Text="{Binding _selectedOrder.Дата,UpdateSourceTrigger=PropertyChanged}" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+            <TextBox x:Name="box7" Margin="10" Width="50" Text="{Binding _selectedOrder.ДатаНачала, UpdateSourceTrigger=PropertyChanged}" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+            <TextBox x:Name="box8" Margin="10" Width="50" Text="{Binding _selectedOrder.ДатаОкончания, UpdateSourceTrigger=PropertyChanged}" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+            <Button   Width="70" Content="Создать" Command="{Binding _addCommand}"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" >
+            <TextBlock Margin="10" Width="100" Text="Код Заказа" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+            <TextBlock Margin="10" Width="100" Text="Код Клиента" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+            <TextBlock Margin="10" Width="100" Text="Код Маршрута" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+            <TextBlock Margin="10" Width="100" Text="Код Водителя" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+            <TextBlock Margin="10" Width="100" Text= "Код ТС" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+            <TextBlock Margin="10" Width="100" Text="Дата Заказа" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+            <TextBlock Margin="10" Width="100" Text="Дата Начала" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+            <TextBlock Margin="10" Width="100" Text="Дата Конца" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
+        </StackPanel>
+    </Grid>
+</Page>

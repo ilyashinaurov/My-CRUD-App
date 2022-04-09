@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{187968F6-788B-4B8B-BD63-C5E3FF90EB74}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>КУРСОВАЯ</RootNamespace>
+    <AssemblyName>КУРСОВАЯ</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Additional\CarQueryInfo.cs" />
+    <Compile Include="Additional\DriverQueryInfo.cs" />
+    <Compile Include="Models\Водитель.cs">
+      <DependentUpon>Order.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Заказ.cs">
+      <DependentUpon>Order.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Клиент.cs">
+      <DependentUpon>Order.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Маршрут.cs">
+      <DependentUpon>Order.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\МодельПрицепа.cs">
+      <DependentUpon>Order.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\МодельТС.cs">
+      <DependentUpon>Order.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Пользователь.cs">
+      <DependentUpon>Order.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Прицеп.cs">
+      <DependentUpon>Order.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\РасходВсехТС.cs">
+      <DependentUpon>Order.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\РасходВсехТС2Пр_Result.cs">
+      <DependentUpon>Order.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\РасходВсехТСПроцедура_Result.cs">
+      <DependentUpon>Order.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\РасходТС2Период_Result.cs">
+      <DependentUpon>Order.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ТС.cs">
+      <DependentUpon>Order.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\CarViewModel.cs" />
+    <Compile Include="ViewModels\DriverViewModel.cs" />
+    <Compile Include="Additional\RelayCommand.cs" />
+    <Compile Include="ViewModels\MainWinowViewModel.cs" />
+    <Compile Include="ViewModels\Static.cs" />
+    <Compile Include="Views\Car\carCardPage.xaml.cs">
+      <DependentUpon>carCardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Car\carFuelconsumptionPeriodPage.xaml.cs">
+      <DependentUpon>carFuelconsumptionPeriodPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Car\carListPage.xaml.cs">
+      <DependentUpon>carListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Driver\driverCardPage.xaml.cs">
+      <DependentUpon>driverCardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\newMainWindow.xaml.cs">
+      <DependentUpon>newMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Driver\driverListPage.xaml.cs">
+      <DependentUpon>driverListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Order\newOrderPage.xaml.cs">
+      <DependentUpon>newOrderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Order\ordersListPage.xaml.cs">
+      <DependentUpon>ordersListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Driver\reportCardPage.xaml.cs">
+      <DependentUpon>reportCardPage.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\Car\carCardPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Car\carFuelconsumptionPeriodPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Car\carListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Driver\driverCardPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Order.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Order.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Order.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Order.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\OrderViewModel.cs" />
+    <Page Include="Views\newMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Driver\driverListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Order\newOrderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Order\ordersListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Driver\reportCardPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="Models\Order.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Order.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\Order.edmx.diagram">
+      <DependentUpon>Order.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Models\Order.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Order.Context.cs</LastGenOutput>
+      <DependentUpon>Order.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Order.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Order.edmx</DependentUpon>
+      <LastGenOutput>Order.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

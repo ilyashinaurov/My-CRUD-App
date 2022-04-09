@@ -1,0 +1,33 @@
+﻿<Window x:Class="КУРСОВАЯ.Views.newMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:КУРСОВАЯ.Views"
+        mc:Ignorable="d"
+        Title="newMainWindow" Height="550" Width="900">
+    <StackPanel>
+        <Menu Height="25" VerticalAlignment="Top">
+            <MenuItem Header="Водитель">
+                <MenuItem Command="{Binding _getDriverList}" Header="Просмотреть список водителей" ></MenuItem>
+                <MenuItem Command="{Binding _getDriverReportList}" Header="Просмотреть табель рабочего времени"></MenuItem>
+                <MenuItem Command="{Binding _getDriverCard}" Header="Просмотреть карточку водителя"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Заказ">
+                <MenuItem Command="{Binding _getOrdersList}" Header="Просмотреть список заказов"></MenuItem>
+                <MenuItem Command="{Binding _getNewOrder}" Header="Сформировать новый заказ"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="ТС">
+                <MenuItem Command="{Binding _getCarList}" Header="Просмотреть список всех ТС" ></MenuItem>
+                <MenuItem Command="{Binding _getCarCard}" Header="Просмотреть карточку ТС" ></MenuItem>
+                <MenuItem Command="{Binding _getcarFuelConsuptionPeriod}" Header="Просмотреть расход всех ТС за период" ></MenuItem>
+                <MenuItem Header="Просмотреть пробег ТС за период" ></MenuItem>
+                <MenuItem Header="Посмотреть даты использования ТС" ></MenuItem>
+                <MenuItem Header="Общий пробег и расход ТС" ></MenuItem>
+            </MenuItem>
+        </Menu>
+        <Frame Content="{Binding _currentPage, UpdateSourceTrigger=PropertyChanged}" NavigationUIVisibility="Hidden" >
+            
+        </Frame>
+    </StackPanel>
+</Window>

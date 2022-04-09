@@ -1,0 +1,660 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище TransportCompanyModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Водитель">
+          <Key>
+            <PropertyRef Name="КодВодителя" />
+          </Key>
+          <Property Name="КодВодителя" Type="int" Nullable="false" />
+          <Property Name="Имя" Type="nchar" MaxLength="25" Nullable="false" />
+          <Property Name="Фамилия" Type="nchar" MaxLength="25" Nullable="false" />
+          <Property Name="Отчество" Type="nchar" MaxLength="25" Nullable="false" />
+          <Property Name="ДатаРождения" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Заказ">
+          <Key>
+            <PropertyRef Name="КодЗаказа" />
+          </Key>
+          <Property Name="КодКлиента" Type="int" Nullable="false" />
+          <Property Name="КодМаршрута" Type="int" Nullable="false" />
+          <Property Name="КодВодителя" Type="int" Nullable="false" />
+          <Property Name="КодТС" Type="int" Nullable="false" />
+          <Property Name="КодЗаказа" Type="int" Nullable="false" />
+          <Property Name="ДатаНачала" Type="date" Nullable="false" />
+          <Property Name="Дата" Type="date" Nullable="false" />
+          <Property Name="ДатаОкончания" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Клиент">
+          <Key>
+            <PropertyRef Name="КодКлиента" />
+          </Key>
+          <Property Name="КодКлиента" Type="int" Nullable="false" />
+          <Property Name="Имя" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Фамилия" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Отчество" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="РасчетныйСчет" Type="bigint" Nullable="false" />
+          <Property Name="Скидка" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Маршрут">
+          <Key>
+            <PropertyRef Name="КодМаршрута" />
+          </Key>
+          <Property Name="КодМаршрута" Type="int" Nullable="false" />
+          <Property Name="ПунктОтправления" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="ПунктНазначения" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="Длина" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="МодельПрицепа">
+          <Key>
+            <PropertyRef Name="КодМоделиПрицепа" />
+          </Key>
+          <Property Name="КодМоделиПрицепа" Type="int" Nullable="false" />
+          <Property Name="Объем" Type="float" Nullable="false" />
+          <Property Name="Грузоподъемность" Type="float" Nullable="false" />
+          <Property Name="Модель" Type="nchar" MaxLength="25" Nullable="false" />
+          <Property Name="Марка" Type="nchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="МодельТС">
+          <Key>
+            <PropertyRef Name="КодМоделиТС" />
+          </Key>
+          <Property Name="КодМоделиТС" Type="int" Nullable="false" />
+          <Property Name="Марка" Type="nchar" MaxLength="25" Nullable="false" />
+          <Property Name="Модель" Type="nchar" MaxLength="25" Nullable="false" />
+          <Property Name="ТипДвигателя" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="Расход" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Пользователь">
+          <Key>
+            <PropertyRef Name="КодПользователя" />
+          </Key>
+          <Property Name="КодПользователя" Type="int" Nullable="false" />
+          <Property Name="Логин" Type="nchar" MaxLength="20" />
+          <Property Name="Пароль" Type="nchar" MaxLength="100" />
+          <Property Name="Тип" Type="int" />
+        </EntityType>
+        <EntityType Name="Прицеп">
+          <Key>
+            <PropertyRef Name="КодПрицепа" />
+          </Key>
+          <Property Name="Госномер" Type="nchar" MaxLength="25" Nullable="false" />
+          <Property Name="КодПрицепа" Type="int" Nullable="false" />
+          <Property Name="КодМоделиПрицепа" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ТС">
+          <Key>
+            <PropertyRef Name="КодТС" />
+          </Key>
+          <Property Name="КодТС" Type="int" Nullable="false" />
+          <Property Name="Госномер" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="КодПрицепа" Type="int" Nullable="false" />
+          <Property Name="КодМоделиТС" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "TransportCompany.dbo.РасходВсехТС" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="РасходВсехТС">
+          <Key>
+            <PropertyRef Name="Номер" />
+            <PropertyRef Name="Расход" />
+            <PropertyRef Name="ДатаНачала" />
+            <PropertyRef Name="ДатаКонца" />
+          </Key>
+          <Property Name="Номер" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Расход" Type="float" Nullable="false" />
+          <Property Name="ДатаНачала" Type="date" Nullable="false" />
+          <Property Name="ДатаКонца" Type="date" Nullable="false" />
+        </EntityType>
+        <Association Name="R_10">
+          <End Role="Маршрут" Type="Self.Маршрут" Multiplicity="1" />
+          <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Маршрут">
+              <PropertyRef Name="КодМаршрута" />
+            </Principal>
+            <Dependent Role="Заказ">
+              <PropertyRef Name="КодМаршрута" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_11">
+          <End Role="Водитель" Type="Self.Водитель" Multiplicity="1" />
+          <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Водитель">
+              <PropertyRef Name="КодВодителя" />
+            </Principal>
+            <Dependent Role="Заказ">
+              <PropertyRef Name="КодВодителя" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_12">
+          <End Role="ТС" Type="Self.ТС" Multiplicity="1" />
+          <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ТС">
+              <PropertyRef Name="КодТС" />
+            </Principal>
+            <Dependent Role="Заказ">
+              <PropertyRef Name="КодТС" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_40">
+          <End Role="МодельПрицепа" Type="Self.МодельПрицепа" Multiplicity="1" />
+          <End Role="Прицеп" Type="Self.Прицеп" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="МодельПрицепа">
+              <PropertyRef Name="КодМоделиПрицепа" />
+            </Principal>
+            <Dependent Role="Прицеп">
+              <PropertyRef Name="КодМоделиПрицепа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_41">
+          <End Role="Прицеп" Type="Self.Прицеп" Multiplicity="1" />
+          <End Role="ТС" Type="Self.ТС" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Прицеп">
+              <PropertyRef Name="КодПрицепа" />
+            </Principal>
+            <Dependent Role="ТС">
+              <PropertyRef Name="КодПрицепа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_42">
+          <End Role="МодельТС" Type="Self.МодельТС" Multiplicity="1" />
+          <End Role="ТС" Type="Self.ТС" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="МодельТС">
+              <PropertyRef Name="КодМоделиТС" />
+            </Principal>
+            <Dependent Role="ТС">
+              <PropertyRef Name="КодМоделиТС" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_9">
+          <End Role="Клиент" Type="Self.Клиент" Multiplicity="1" />
+          <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Клиент">
+              <PropertyRef Name="КодКлиента" />
+            </Principal>
+            <Dependent Role="Заказ">
+              <PropertyRef Name="КодКлиента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="РасходТС2Период" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ДатаНачала" Type="date" Mode="In" />
+          <Parameter Name="ДатаКонца" Type="date" Mode="In" />
+        </Function>
+        <EntityContainer Name="Хранилище TransportCompanyModelContainer">
+          <EntitySet Name="Водитель" EntityType="Self.Водитель" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Заказ" EntityType="Self.Заказ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Клиент" EntityType="Self.Клиент" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Маршрут" EntityType="Self.Маршрут" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="МодельПрицепа" EntityType="Self.МодельПрицепа" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="МодельТС" EntityType="Self.МодельТС" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Пользователь" EntityType="Self.Пользователь" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Прицеп" EntityType="Self.Прицеп" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ТС" EntityType="Self.ТС" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="РасходВсехТС" EntityType="Self.РасходВсехТС" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [РасходВсехТС].[Номер] AS [Номер], 
+    [РасходВсехТС].[Расход] AS [Расход], 
+    [РасходВсехТС].[ДатаНачала] AS [ДатаНачала], 
+    [РасходВсехТС].[ДатаКонца] AS [ДатаКонца]
+    FROM [dbo].[РасходВсехТС] AS [РасходВсехТС]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="R_10" Association="Self.R_10">
+            <End Role="Маршрут" EntitySet="Маршрут" />
+            <End Role="Заказ" EntitySet="Заказ" />
+          </AssociationSet>
+          <AssociationSet Name="R_11" Association="Self.R_11">
+            <End Role="Водитель" EntitySet="Водитель" />
+            <End Role="Заказ" EntitySet="Заказ" />
+          </AssociationSet>
+          <AssociationSet Name="R_12" Association="Self.R_12">
+            <End Role="ТС" EntitySet="ТС" />
+            <End Role="Заказ" EntitySet="Заказ" />
+          </AssociationSet>
+          <AssociationSet Name="R_40" Association="Self.R_40">
+            <End Role="МодельПрицепа" EntitySet="МодельПрицепа" />
+            <End Role="Прицеп" EntitySet="Прицеп" />
+          </AssociationSet>
+          <AssociationSet Name="R_41" Association="Self.R_41">
+            <End Role="Прицеп" EntitySet="Прицеп" />
+            <End Role="ТС" EntitySet="ТС" />
+          </AssociationSet>
+          <AssociationSet Name="R_42" Association="Self.R_42">
+            <End Role="МодельТС" EntitySet="МодельТС" />
+            <End Role="ТС" EntitySet="ТС" />
+          </AssociationSet>
+          <AssociationSet Name="R_9" Association="Self.R_9">
+            <End Role="Клиент" EntitySet="Клиент" />
+            <End Role="Заказ" EntitySet="Заказ" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TransportCompanyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Заказ">
+          <Key>
+            <PropertyRef Name="КодЗаказа" />
+          </Key>
+          <Property Name="КодКлиента" Type="Int32" Nullable="false" />
+          <Property Name="КодМаршрута" Type="Int32" Nullable="false" />
+          <Property Name="КодВодителя" Type="Int32" Nullable="false" />
+          <Property Name="КодТС" Type="Int32" Nullable="false" />
+          <Property Name="КодЗаказа" Type="Int32" Nullable="false" />
+          <Property Name="ДатаНачала" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Дата" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ДатаОкончания" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Водитель" Relationship="TransportCompanyModel.R_11" FromRole="Заказ" ToRole="Водитель" />
+          <NavigationProperty Name="Маршрут" Relationship="TransportCompanyModel.R_10" FromRole="Заказ" ToRole="Маршрут" />
+          <NavigationProperty Name="ТС" Relationship="TransportCompanyModel.R_12" FromRole="Заказ" ToRole="ТС" />
+          <NavigationProperty Name="Клиент" Relationship="TransportCompanyModel.R_9" FromRole="Заказ" ToRole="Клиент" />
+        </EntityType>
+        <EntityContainer Name="TransportCompanyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Заказ" EntityType="Self.Заказ" />
+          <EntitySet Name="Водитель" EntityType="TransportCompanyModel.Водитель" />
+          <EntitySet Name="Клиент" EntityType="TransportCompanyModel.Клиент" />
+          <EntitySet Name="Маршрут" EntityType="TransportCompanyModel.Маршрут" />
+          <EntitySet Name="МодельПрицепа" EntityType="TransportCompanyModel.МодельПрицепа" />
+          <EntitySet Name="МодельТС" EntityType="TransportCompanyModel.МодельТС" />
+          <EntitySet Name="Пользователь" EntityType="TransportCompanyModel.Пользователь" />
+          <EntitySet Name="Прицеп" EntityType="TransportCompanyModel.Прицеп" />
+          <EntitySet Name="ТС" EntityType="TransportCompanyModel.ТС" />
+          <AssociationSet Name="R_11" Association="TransportCompanyModel.R_11">
+            <End Role="Водитель" EntitySet="Водитель" />
+            <End Role="Заказ" EntitySet="Заказ" />
+          </AssociationSet>
+          <AssociationSet Name="R_10" Association="TransportCompanyModel.R_10">
+            <End Role="Маршрут" EntitySet="Маршрут" />
+            <End Role="Заказ" EntitySet="Заказ" />
+          </AssociationSet>
+          <AssociationSet Name="R_12" Association="TransportCompanyModel.R_12">
+            <End Role="ТС" EntitySet="ТС" />
+            <End Role="Заказ" EntitySet="Заказ" />
+          </AssociationSet>
+          <AssociationSet Name="R_9" Association="TransportCompanyModel.R_9">
+            <End Role="Клиент" EntitySet="Клиент" />
+            <End Role="Заказ" EntitySet="Заказ" />
+          </AssociationSet>
+          <AssociationSet Name="R_40" Association="TransportCompanyModel.R_40">
+            <End Role="МодельПрицепа" EntitySet="МодельПрицепа" />
+            <End Role="Прицеп" EntitySet="Прицеп" />
+          </AssociationSet>
+          <AssociationSet Name="R_42" Association="TransportCompanyModel.R_42">
+            <End Role="МодельТС" EntitySet="МодельТС" />
+            <End Role="ТС" EntitySet="ТС" />
+          </AssociationSet>
+          <AssociationSet Name="R_41" Association="TransportCompanyModel.R_41">
+            <End Role="Прицеп" EntitySet="Прицеп" />
+            <End Role="ТС" EntitySet="ТС" />
+          </AssociationSet>
+          <EntitySet Name="РасходВсехТС" EntityType="TransportCompanyModel.РасходВсехТС" />
+          <FunctionImport Name="РасходВсехТСПроцедура" ReturnType="Collection(TransportCompanyModel.РасходВсехТСПроцедура_Result)">
+            <Parameter Name="ДатаНачала" Mode="In" Type="DateTime" />
+            <Parameter Name="ДатаКонца" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="РасходВсехТС2Пр" ReturnType="Collection(TransportCompanyModel.РасходВсехТС2Пр_Result)">
+            <Parameter Name="ДатаНачала" Mode="In" Type="DateTime" />
+            <Parameter Name="ДатаКонца" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="РасходТС2Период" ReturnType="Collection(TransportCompanyModel.РасходТС2Период_Result)">
+            <Parameter Name="ДатаНачала" Mode="In" Type="DateTime" />
+            <Parameter Name="ДатаКонца" Mode="In" Type="DateTime" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Водитель">
+          <Key>
+            <PropertyRef Name="КодВодителя" />
+          </Key>
+          <Property Name="КодВодителя" Type="Int32" Nullable="false" />
+          <Property Name="Имя" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="true" />
+          <Property Name="Фамилия" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="true" />
+          <Property Name="Отчество" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="true" />
+          <Property Name="ДатаРождения" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Заказ" Relationship="TransportCompanyModel.R_11" FromRole="Водитель" ToRole="Заказ" />
+        </EntityType>
+        <EntityType Name="Клиент">
+          <Key>
+            <PropertyRef Name="КодКлиента" />
+          </Key>
+          <Property Name="КодКлиента" Type="Int32" Nullable="false" />
+          <Property Name="Имя" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Фамилия" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Отчество" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="РасчетныйСчет" Type="Int64" Nullable="false" />
+          <Property Name="Скидка" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Заказ" Relationship="TransportCompanyModel.R_9" FromRole="Клиент" ToRole="Заказ" />
+        </EntityType>
+        <EntityType Name="Маршрут">
+          <Key>
+            <PropertyRef Name="КодМаршрута" />
+          </Key>
+          <Property Name="КодМаршрута" Type="Int32" Nullable="false" />
+          <Property Name="ПунктОтправления" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="ПунктНазначения" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Длина" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Заказ" Relationship="TransportCompanyModel.R_10" FromRole="Маршрут" ToRole="Заказ" />
+        </EntityType>
+        <EntityType Name="МодельПрицепа">
+          <Key>
+            <PropertyRef Name="КодМоделиПрицепа" />
+          </Key>
+          <Property Name="КодМоделиПрицепа" Type="Int32" Nullable="false" />
+          <Property Name="Объем" Type="Double" Nullable="false" />
+          <Property Name="Грузоподъемность" Type="Double" Nullable="false" />
+          <Property Name="Модель" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="true" />
+          <Property Name="Марка" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Прицеп" Relationship="TransportCompanyModel.R_40" FromRole="МодельПрицепа" ToRole="Прицеп" />
+        </EntityType>
+        <EntityType Name="МодельТС">
+          <Key>
+            <PropertyRef Name="КодМоделиТС" />
+          </Key>
+          <Property Name="КодМоделиТС" Type="Int32" Nullable="false" />
+          <Property Name="Марка" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="true" />
+          <Property Name="Модель" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="true" />
+          <Property Name="ТипДвигателя" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="Расход" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ТС" Relationship="TransportCompanyModel.R_42" FromRole="МодельТС" ToRole="ТС" />
+        </EntityType>
+        <EntityType Name="Пользователь">
+          <Key>
+            <PropertyRef Name="КодПользователя" />
+          </Key>
+          <Property Name="КодПользователя" Type="Int32" Nullable="false" />
+          <Property Name="Логин" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Пароль" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Тип" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Прицеп">
+          <Key>
+            <PropertyRef Name="КодПрицепа" />
+          </Key>
+          <Property Name="Госномер" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="true" />
+          <Property Name="КодПрицепа" Type="Int32" Nullable="false" />
+          <Property Name="КодМоделиПрицепа" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="МодельПрицепа" Relationship="TransportCompanyModel.R_40" FromRole="Прицеп" ToRole="МодельПрицепа" />
+          <NavigationProperty Name="ТС" Relationship="TransportCompanyModel.R_41" FromRole="Прицеп" ToRole="ТС" />
+        </EntityType>
+        <EntityType Name="ТС">
+          <Key>
+            <PropertyRef Name="КодТС" />
+          </Key>
+          <Property Name="КодТС" Type="Int32" Nullable="false" />
+          <Property Name="Госномер" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="КодПрицепа" Type="Int32" Nullable="false" />
+          <Property Name="КодМоделиТС" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Заказ" Relationship="TransportCompanyModel.R_12" FromRole="ТС" ToRole="Заказ" />
+          <NavigationProperty Name="МодельТС" Relationship="TransportCompanyModel.R_42" FromRole="ТС" ToRole="МодельТС" />
+          <NavigationProperty Name="Прицеп" Relationship="TransportCompanyModel.R_41" FromRole="ТС" ToRole="Прицеп" />
+        </EntityType>
+        <Association Name="R_11">
+          <End Type="TransportCompanyModel.Водитель" Role="Водитель" Multiplicity="1" />
+          <End Type="TransportCompanyModel.Заказ" Role="Заказ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Водитель">
+              <PropertyRef Name="КодВодителя" />
+            </Principal>
+            <Dependent Role="Заказ">
+              <PropertyRef Name="КодВодителя" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_10">
+          <End Type="TransportCompanyModel.Маршрут" Role="Маршрут" Multiplicity="1" />
+          <End Type="TransportCompanyModel.Заказ" Role="Заказ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Маршрут">
+              <PropertyRef Name="КодМаршрута" />
+            </Principal>
+            <Dependent Role="Заказ">
+              <PropertyRef Name="КодМаршрута" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_12">
+          <End Type="TransportCompanyModel.ТС" Role="ТС" Multiplicity="1" />
+          <End Type="TransportCompanyModel.Заказ" Role="Заказ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ТС">
+              <PropertyRef Name="КодТС" />
+            </Principal>
+            <Dependent Role="Заказ">
+              <PropertyRef Name="КодТС" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_9">
+          <End Type="TransportCompanyModel.Клиент" Role="Клиент" Multiplicity="1" />
+          <End Type="TransportCompanyModel.Заказ" Role="Заказ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Клиент">
+              <PropertyRef Name="КодКлиента" />
+            </Principal>
+            <Dependent Role="Заказ">
+              <PropertyRef Name="КодКлиента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_40">
+          <End Type="TransportCompanyModel.МодельПрицепа" Role="МодельПрицепа" Multiplicity="1" />
+          <End Type="TransportCompanyModel.Прицеп" Role="Прицеп" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="МодельПрицепа">
+              <PropertyRef Name="КодМоделиПрицепа" />
+            </Principal>
+            <Dependent Role="Прицеп">
+              <PropertyRef Name="КодМоделиПрицепа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_42">
+          <End Type="TransportCompanyModel.МодельТС" Role="МодельТС" Multiplicity="1" />
+          <End Type="TransportCompanyModel.ТС" Role="ТС" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="МодельТС">
+              <PropertyRef Name="КодМоделиТС" />
+            </Principal>
+            <Dependent Role="ТС">
+              <PropertyRef Name="КодМоделиТС" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_41">
+          <End Type="TransportCompanyModel.Прицеп" Role="Прицеп" Multiplicity="1" />
+          <End Type="TransportCompanyModel.ТС" Role="ТС" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Прицеп">
+              <PropertyRef Name="КодПрицепа" />
+            </Principal>
+            <Dependent Role="ТС">
+              <PropertyRef Name="КодПрицепа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="РасходВсехТС">
+          <Key>
+            <PropertyRef Name="Номер" />
+            <PropertyRef Name="Расход" />
+            <PropertyRef Name="ДатаНачала" />
+            <PropertyRef Name="ДатаКонца" />
+          </Key>
+          <Property Name="Номер" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Расход" Type="Double" Nullable="false" />
+          <Property Name="ДатаНачала" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ДатаКонца" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <ComplexType Name="РасходВсехТСПроцедура_Result">
+          <Property Type="String" Name="Номер" Nullable="false" MaxLength="10" />
+          <Property Type="Double" Name="Column1" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="РасходВсехТС2Пр_Result">
+          <Property Type="String" Name="Госномер" Nullable="false" MaxLength="10" />
+          <Property Type="Double" Name="Расход" Nullable="true" />
+          <Property Type="DateTime" Name="ДатаНачала" Nullable="false" />
+          <Property Type="DateTime" Name="ДатаОкончания" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="РасходТС2Период_Result">
+          <Property Type="String" Name="Госномер" Nullable="false" MaxLength="10" />
+          <Property Type="Double" Name="Расход" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище TransportCompanyModelContainer" CdmEntityContainer="TransportCompanyEntities">
+          <EntitySetMapping Name="Заказ">
+            <EntityTypeMapping TypeName="TransportCompanyModel.Заказ">
+              <MappingFragment StoreEntitySet="Заказ">
+                <ScalarProperty Name="КодКлиента" ColumnName="КодКлиента" />
+                <ScalarProperty Name="КодМаршрута" ColumnName="КодМаршрута" />
+                <ScalarProperty Name="КодВодителя" ColumnName="КодВодителя" />
+                <ScalarProperty Name="КодТС" ColumnName="КодТС" />
+                <ScalarProperty Name="КодЗаказа" ColumnName="КодЗаказа" />
+                <ScalarProperty Name="ДатаНачала" ColumnName="ДатаНачала" />
+                <ScalarProperty Name="Дата" ColumnName="Дата" />
+                <ScalarProperty Name="ДатаОкончания" ColumnName="ДатаОкончания" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Водитель">
+            <EntityTypeMapping TypeName="TransportCompanyModel.Водитель">
+              <MappingFragment StoreEntitySet="Водитель">
+                <ScalarProperty Name="ДатаРождения" ColumnName="ДатаРождения" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="КодВодителя" ColumnName="КодВодителя" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Клиент">
+            <EntityTypeMapping TypeName="TransportCompanyModel.Клиент">
+              <MappingFragment StoreEntitySet="Клиент">
+                <ScalarProperty Name="Скидка" ColumnName="Скидка" />
+                <ScalarProperty Name="РасчетныйСчет" ColumnName="РасчетныйСчет" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="КодКлиента" ColumnName="КодКлиента" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Маршрут">
+            <EntityTypeMapping TypeName="TransportCompanyModel.Маршрут">
+              <MappingFragment StoreEntitySet="Маршрут">
+                <ScalarProperty Name="Длина" ColumnName="Длина" />
+                <ScalarProperty Name="ПунктНазначения" ColumnName="ПунктНазначения" />
+                <ScalarProperty Name="ПунктОтправления" ColumnName="ПунктОтправления" />
+                <ScalarProperty Name="КодМаршрута" ColumnName="КодМаршрута" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="МодельПрицепа">
+            <EntityTypeMapping TypeName="TransportCompanyModel.МодельПрицепа">
+              <MappingFragment StoreEntitySet="МодельПрицепа">
+                <ScalarProperty Name="Марка" ColumnName="Марка" />
+                <ScalarProperty Name="Модель" ColumnName="Модель" />
+                <ScalarProperty Name="Грузоподъемность" ColumnName="Грузоподъемность" />
+                <ScalarProperty Name="Объем" ColumnName="Объем" />
+                <ScalarProperty Name="КодМоделиПрицепа" ColumnName="КодМоделиПрицепа" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="МодельТС">
+            <EntityTypeMapping TypeName="TransportCompanyModel.МодельТС">
+              <MappingFragment StoreEntitySet="МодельТС">
+                <ScalarProperty Name="Расход" ColumnName="Расход" />
+                <ScalarProperty Name="ТипДвигателя" ColumnName="ТипДвигателя" />
+                <ScalarProperty Name="Модель" ColumnName="Модель" />
+                <ScalarProperty Name="Марка" ColumnName="Марка" />
+                <ScalarProperty Name="КодМоделиТС" ColumnName="КодМоделиТС" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Пользователь">
+            <EntityTypeMapping TypeName="TransportCompanyModel.Пользователь">
+              <MappingFragment StoreEntitySet="Пользователь">
+                <ScalarProperty Name="Тип" ColumnName="Тип" />
+                <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+                <ScalarProperty Name="Логин" ColumnName="Логин" />
+                <ScalarProperty Name="КодПользователя" ColumnName="КодПользователя" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Прицеп">
+            <EntityTypeMapping TypeName="TransportCompanyModel.Прицеп">
+              <MappingFragment StoreEntitySet="Прицеп">
+                <ScalarProperty Name="КодМоделиПрицепа" ColumnName="КодМоделиПрицепа" />
+                <ScalarProperty Name="КодПрицепа" ColumnName="КодПрицепа" />
+                <ScalarProperty Name="Госномер" ColumnName="Госномер" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ТС">
+            <EntityTypeMapping TypeName="TransportCompanyModel.ТС">
+              <MappingFragment StoreEntitySet="ТС">
+                <ScalarProperty Name="КодМоделиТС" ColumnName="КодМоделиТС" />
+                <ScalarProperty Name="КодПрицепа" ColumnName="КодПрицепа" />
+                <ScalarProperty Name="Госномер" ColumnName="Госномер" />
+                <ScalarProperty Name="КодТС" ColumnName="КодТС" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="РасходВсехТС">
+            <EntityTypeMapping TypeName="TransportCompanyModel.РасходВсехТС">
+              <MappingFragment StoreEntitySet="РасходВсехТС">
+                <ScalarProperty Name="ДатаКонца" ColumnName="ДатаКонца" />
+                <ScalarProperty Name="ДатаНачала" ColumnName="ДатаНачала" />
+                <ScalarProperty Name="Расход" ColumnName="Расход" />
+                <ScalarProperty Name="Номер" ColumnName="Номер" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="РасходТС2Период" FunctionName="Хранилище TransportCompanyModel.РасходТС2Период">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TransportCompanyModel.РасходТС2Период_Result">
+                <ScalarProperty Name="Госномер" ColumnName="Госномер" />
+                <ScalarProperty Name="Расход" ColumnName="Расход" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
