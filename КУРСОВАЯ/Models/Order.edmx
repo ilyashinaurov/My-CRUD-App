@@ -192,6 +192,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="ИспользованиеТС" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ОбщийПробегТС" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ПробегТСПериод" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ДатаНачала" Type="date" Mode="In" />
+          <Parameter Name="ДатаКонца" Type="date" Mode="In" />
+        </Function>
         <Function Name="РасходТС2Период" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ДатаНачала" Type="date" Mode="In" />
           <Parameter Name="ДатаКонца" Type="date" Mode="In" />
@@ -312,6 +318,12 @@
             <Parameter Name="ДатаКонца" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="РасходТС2Период" ReturnType="Collection(TransportCompanyModel.РасходТС2Период_Result)">
+            <Parameter Name="ДатаНачала" Mode="In" Type="DateTime" />
+            <Parameter Name="ДатаКонца" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ИспользованиеТС" ReturnType="Collection(TransportCompanyModel.ИспользованиеТС_Result)" />
+          <FunctionImport Name="ОбщийПробегТС" ReturnType="Collection(TransportCompanyModel.ОбщийПробегТС_Result)" />
+          <FunctionImport Name="ПробегТСПериод" ReturnType="Collection(TransportCompanyModel.ПробегТСПериод_Result)">
             <Parameter Name="ДатаНачала" Mode="In" Type="DateTime" />
             <Parameter Name="ДатаКонца" Mode="In" Type="DateTime" />
           </FunctionImport>
@@ -512,6 +524,19 @@
           <Property Type="String" Name="Госномер" Nullable="false" MaxLength="10" />
           <Property Type="Double" Name="Расход" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="ИспользованиеТС_Result">
+          <Property Type="String" Name="Госномер" Nullable="false" MaxLength="10" />
+          <Property Type="DateTime" Name="НачалоЗаказа" Nullable="false" />
+          <Property Type="DateTime" Name="КонецЗаказа" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ОбщийПробегТС_Result">
+          <Property Type="String" Name="Госномер" Nullable="false" MaxLength="10" />
+          <Property Type="Double" Name="Пробег" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ПробегТСПериод_Result">
+          <Property Type="String" Name="Госномер" Nullable="false" MaxLength="10" />
+          <Property Type="Double" Name="Пробег" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -631,6 +656,31 @@
               <ComplexTypeMapping TypeName="TransportCompanyModel.РасходТС2Период_Result">
                 <ScalarProperty Name="Госномер" ColumnName="Госномер" />
                 <ScalarProperty Name="Расход" ColumnName="Расход" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ИспользованиеТС" FunctionName="Хранилище TransportCompanyModel.ИспользованиеТС">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TransportCompanyModel.ИспользованиеТС_Result">
+                <ScalarProperty Name="Госномер" ColumnName="Госномер" />
+                <ScalarProperty Name="НачалоЗаказа" ColumnName="НачалоЗаказа" />
+                <ScalarProperty Name="КонецЗаказа" ColumnName="КонецЗаказа" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ОбщийПробегТС" FunctionName="Хранилище TransportCompanyModel.ОбщийПробегТС">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TransportCompanyModel.ОбщийПробегТС_Result">
+                <ScalarProperty Name="Госномер" ColumnName="Госномер" />
+                <ScalarProperty Name="Пробег" ColumnName="Пробег" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ПробегТСПериод" FunctionName="Хранилище TransportCompanyModel.ПробегТСПериод">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TransportCompanyModel.ПробегТСПериод_Result">
+                <ScalarProperty Name="Госномер" ColumnName="Госномер" />
+                <ScalarProperty Name="Пробег" ColumnName="Пробег" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

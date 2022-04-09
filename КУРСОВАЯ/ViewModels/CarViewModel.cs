@@ -40,6 +40,15 @@ namespace КУРСОВАЯ.ViewModels
         }
 
 
+        private CarQueryInfo mileagePeriod;
+
+        public CarQueryInfo _mileagePeriod
+        {
+            get { return mileagePeriod; }
+            set { mileagePeriod = value; OnPropertyChanged("mileagePeriod"); }
+        }
+
+
 
         public CarViewModel()
         {
@@ -51,7 +60,8 @@ namespace КУРСОВАЯ.ViewModels
         {
             _carList = new ObservableCollection<ТС>(transportCompanyEntities.ТС);
             _carCard = new CarQueryInfo();
-            _carFuelPeriod = new CarQueryInfo();    
+            _carFuelPeriod = new CarQueryInfo();
+            _mileagePeriod = new CarQueryInfo();
 
         }
 
@@ -93,6 +103,20 @@ namespace КУРСОВАЯ.ViewModels
                   (getFuelconsumptionPeriod = new RelayCommand(obj =>
                   {
                       _carFuelPeriod._queryResult = transportCompanyEntities.РасходТС2Период(_carFuelPeriod._firstTime, _carFuelPeriod._secondTime).ToList<object>();
+                  }));
+            }
+        }
+
+        private RelayCommand getMileagePeriod; // команда добавления записи
+
+        public RelayCommand _getMileagePeriod// геттер, как работает пока не ясно т_т
+        {
+            get
+            {
+                return getMileagePeriod ??
+                  (getMileagePeriod = new RelayCommand(obj =>
+                  {
+                      _mileagePeriod._queryResult = transportCompanyEntities.ПробегТСПериод(_mileagePeriod._firstTime, _mileagePeriod._secondTime).ToList<object>();
                   }));
             }
         }

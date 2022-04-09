@@ -75,6 +75,9 @@
     <Compile Include="Models\Заказ.cs">
       <DependentUpon>Order.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ИспользованиеТС_Result.cs">
+      <DependentUpon>Order.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Клиент.cs">
       <DependentUpon>Order.tt</DependentUpon>
     </Compile>
@@ -87,10 +90,16 @@
     <Compile Include="Models\МодельТС.cs">
       <DependentUpon>Order.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ОбщийПробегТС_Result.cs">
+      <DependentUpon>Order.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Пользователь.cs">
       <DependentUpon>Order.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Прицеп.cs">
+      <DependentUpon>Order.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ПробегТСПериод_Result.cs">
       <DependentUpon>Order.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\РасходВсехТС.cs">
@@ -122,6 +131,9 @@
     <Compile Include="Views\Car\carListPage.xaml.cs">
       <DependentUpon>carListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Car\carMileagePeriod.xaml.cs">
+      <DependentUpon>carMileagePeriod.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Driver\driverCardPage.xaml.cs">
       <DependentUpon>driverCardPage.xaml</DependentUpon>
     </Compile>
@@ -149,6 +161,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Car\carListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Car\carMileagePeriod.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

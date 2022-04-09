@@ -21,9 +21,9 @@
                 <MenuItem Command="{Binding _getCarList}" Header="Просмотреть список всех ТС" ></MenuItem>
                 <MenuItem Command="{Binding _getCarCard}" Header="Просмотреть карточку ТС" ></MenuItem>
                 <MenuItem Command="{Binding _getcarFuelConsuptionPeriod}" Header="Просмотреть расход всех ТС за период" ></MenuItem>
-                <MenuItem Header="Просмотреть пробег ТС за период" ></MenuItem>
+                <MenuItem Command="{Binding _getMileagePeriod}" Header="Просмотреть пробег всех ТС за период" ></MenuItem>
                 <MenuItem Header="Посмотреть даты использования ТС" ></MenuItem>
-                <MenuItem Header="Общий пробег и расход ТС" ></MenuItem>
+                <MenuItem Header="Общий пробег всех ТС" ></MenuItem>
             </MenuItem>
         </Menu>
         <Frame Content="{Binding _currentPage, UpdateSourceTrigger=PropertyChanged}" NavigationUIVisibility="Hidden" >

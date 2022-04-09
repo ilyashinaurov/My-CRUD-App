@@ -76,5 +76,28 @@ namespace КУРСОВАЯ.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<РасходТС2Период_Result>("РасходТС2Период", датаНачалаParameter, датаКонцаParameter);
         }
+    
+        public virtual ObjectResult<ИспользованиеТС_Result> ИспользованиеТС()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ИспользованиеТС_Result>("ИспользованиеТС");
+        }
+    
+        public virtual ObjectResult<ОбщийПробегТС_Result> ОбщийПробегТС()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ОбщийПробегТС_Result>("ОбщийПробегТС");
+        }
+    
+        public virtual ObjectResult<ПробегТСПериод_Result> ПробегТСПериод(Nullable<System.DateTime> датаНачала, Nullable<System.DateTime> датаКонца)
+        {
+            var датаНачалаParameter = датаНачала.HasValue ?
+                new ObjectParameter("ДатаНачала", датаНачала) :
+                new ObjectParameter("ДатаНачала", typeof(System.DateTime));
+    
+            var датаКонцаParameter = датаКонца.HasValue ?
+                new ObjectParameter("ДатаКонца", датаКонца) :
+                new ObjectParameter("ДатаКонца", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ПробегТСПериод_Result>("ПробегТСПериод", датаНачалаParameter, датаКонцаParameter);
+        }
     }
 }

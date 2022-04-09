@@ -30,6 +30,8 @@ namespace КУРСОВАЯ.ViewModels
 
         private Page carFuelConsuptionPeriod;
 
+        private Page carMileagePeriod;
+
         private Page currentPage;
 
         
@@ -48,7 +50,8 @@ namespace КУРСОВАЯ.ViewModels
             newOrder = new newOrderPage();
             carList = new carListPage();
             carCard = new carCardPage();
-            carFuelConsuptionPeriod = new carFuelconsumptionPeriodPage(); 
+            carFuelConsuptionPeriod = new carFuelconsumptionPeriodPage();
+            carMileagePeriod = new carMileagePeriod();
         }
 
         private RelayCommand getCarCard;
@@ -173,9 +176,24 @@ namespace КУРСОВАЯ.ViewModels
             }
         }
 
+        private RelayCommand getMileagePeriod; // команда добавления записи
+
+        public RelayCommand _getMileagePeriod// геттер, как работает пока не ясно т_т
+        {
+            get
+            {
+                return getMileagePeriod ??
+                  (getMileagePeriod = new RelayCommand(obj =>
+                  {
+                      _currentPage = carMileagePeriod;
+
+                  }));
+            }
+        }
 
 
-        
+
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = null)
