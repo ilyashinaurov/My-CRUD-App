@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:КУРСОВАЯ.Views"
         mc:Ignorable="d"
-        Title="newMainWindow" Height="550" Width="900">
+        Title="Транспортная компания" Height="550" Width="900">
     <StackPanel>
         <Menu Height="25" VerticalAlignment="Top">
             <MenuItem Header="Водитель">

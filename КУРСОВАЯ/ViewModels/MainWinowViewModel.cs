@@ -39,6 +39,7 @@ namespace КУРСОВАЯ.ViewModels
         private Page currentPage;
 
         
+        
         public Page _currentPage
         {
             get { return currentPage; }
@@ -58,6 +59,7 @@ namespace КУРСОВАЯ.ViewModels
             carMileagePeriod = new carMileagePeriod();
             carReportCard = new carReportCardPage();
             carMileageAllTime = new carMileageAllTimePage();
+            currentPage =new helloPage();
         }
 
         private RelayCommand getCarCard;

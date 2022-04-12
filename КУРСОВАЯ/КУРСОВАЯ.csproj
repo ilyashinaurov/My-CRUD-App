@@ -143,6 +143,9 @@
     <Compile Include="Views\Driver\driverCardPage.xaml.cs">
       <DependentUpon>driverCardPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\helloPage.xaml.cs">
+      <DependentUpon>helloPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\newMainWindow.xaml.cs">
       <DependentUpon>newMainWindow.xaml</DependentUpon>
     </Compile>
@@ -206,6 +209,10 @@
       <DependentUpon>Order.edmx</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\OrderViewModel.cs" />
+    <Page Include="Views\helloPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\newMainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
